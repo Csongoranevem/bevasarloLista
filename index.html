@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CSS-->
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/mainStyle.css">
+    <title>Bevasarlólista</title>
+</head>
+<body data-bs-theme="dark">
+
+    <div class="container">
+        <header>
+            <h1>Bevásárlólista App</h1>
+            <h3>By 13.A</h3>
+        </header>
+        <main>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Műveletek
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <!--Űrlap-->
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="tName">
+                        <label for="floatingInput">Termék neve</label>
+                      </div>
+                      <div class="form-floating">
+                        <input type="number" class="form-control" id="tPrice" min="0" placeholder="Password">
+                        <label for="floatingPassword">Egységár</label>
+
+                      <div class="form-floating mt-4">
+                        <input type="number" class="form-control" id="tDB" min="0" placeholder="Password">
+                        <label for="floatingPassword">darabszám</label>
+
+                      <button type="button" class="btn btn-secondary mt-2" id="addButton">Hozzáadás</button>    
+                      <button type="button" class="btn btn-danger mt-2" id="clearButton" onclick="clearForm()">Törlés</button>    
+
+                    </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- táblázat-->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tétel</th>
+                        <th class="text-end">Egys.ár</th>
+                        <th class="text-end">Menny-</th>
+                        <th class="text-end">Össz</th>
+                    </tr>
+                </thead>
+                <tbody id="itemList">
+                        <!--dinamikusan-->
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Összesen</td>
+                        <td class="text-end"> <strong id="summaryLBL">0</strong><strong> Ft</strong></td>
+                    </tr>
+                </tfoot>
+              </table>
+        </main>
+        <footer>
+            <h5>Bajai SZC Türr István Technikum</h5>
+        </footer>
+    </div>
+
+    <!--Scripts-->
+    <script src="./JS/app.js"></script>
+    <script src="./JS/bootstrap.min.js"></script>
+</body>
+</html>
