@@ -13,3 +13,27 @@ footer h6{
     font-weight: bold;
     color: var(--text-primary);
 }
+
+
+#adatTorles{
+    width: 25px;
+    height: 25px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+/*reszponzivitas*/
+
+
+
+/*@media screen and (max-width = 1000) {
+    #accBody{
+        display: flex;
+        flex-direction: row;
+    }
+    
+}*/
