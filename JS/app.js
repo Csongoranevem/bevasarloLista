@@ -1,3 +1,6 @@
+"use strict"
+
+
 let name = document.getElementById('termekLista')
 let price = document.getElementById('tPrice')
 let count = document.getElementById('tDB')
@@ -7,17 +10,19 @@ let list = document.getElementById('itemList')
 let sum = document.getElementById('summaryLBL')
 let sumCount =0
 
+let dataLista = document.getElementById('datalistOptions')
+
+name.value = ''
+price.value = 0
+count.value = 0
+
+
 let Items = []
 let termekLista = []
 
 addBTN.addEventListener('click', () =>{
     if (name.value == '' || price.value == 0 || count.value == 0) {
         alert("Nem adtál meg semmit")
-        return
-    }
-
-    else if (price.value <= 20) {
-        alert("Nem lehet ilyen olcsó semmi pali :((")
         return
     }
 
@@ -29,22 +34,21 @@ addBTN.addEventListener('click', () =>{
         Tcount: count.value,
         Tsum: price.value*count.value
     })
-    save()
 
-    list.innerHTML = ''
-    sumCount = 0
 
     termekListaFetoltes()
     refreshTable()
+    save()
     
     
 
-    sum.innerHTML = sumCount
 })
 
 
 function refreshTable() {
     list.innerHTML = ''
+
+    let allSum = 0
 
     for (let i = 0; i < Items.length; i++) {
         let tr = document.createElement('tr')
@@ -56,12 +60,13 @@ function refreshTable() {
         let td6 = document.createElement('td')
 
         let torlesInTBL = document.createElement('button')
-        torlesInTBL.id = `adatTorles`
         torlesInTBL.classList.add('btn', 'btn-danger', 'adatTorles')
-        torlesInTBL.textContent = 'x'
+        torlesInTBL.innerHTML = 'X'
         torlesInTBL.addEventListener('click', () => {
             deleteItem(i)
         })
+
+        allSum += Items[i].Tsum
         td6.appendChild(torlesInTBL)
     
 
@@ -83,12 +88,14 @@ function refreshTable() {
         tr.appendChild(td4)
         tr.appendChild(td5)
         tr.appendChild(td6)
+
     
         list.appendChild(tr)
 
-        sumCount += Items[i].Tsum
-
     }
+
+    sum.innerText = allSum
+
 
 }
 //Mentés
@@ -118,27 +125,54 @@ function clearForm() {
 }
 
 function deleteItem(idx) {
-    console.log(idx)
     if (confirm('Biztosan törlöd?')) {
         Items.splice(idx, 1)
         refreshTable()
         save()
+
     }
 }
 
 
 load()
 refreshTable()
+termekListaFetoltes()
+
 
 
 function termekListaFetoltes() {
-    let ujTermek = document.getElementById('termekLista').value
-    if (!(termekLista.find(a => a.name == ujTermek))) {
+    
+    let ujTermekName = document.getElementById('termekLista').value
+    let ujTermekPrice = document.getElementById('tPrice').value
+
+    let ujTermek ={
+        uTname: ujTermekName,
+        uTprice: ujTermekPrice
+    }
+
+    if (!termekLista.includes(ujTermek)) {
         termekLista.push(ujTermek)
     }
 
-    document.getElementById('datalistOptions').innerHTML += `<option value="${ujTermek}"></option>`
+    dataLista.innerHTML = ''
+    if (!termekLista.length == 0) {
+            termekLista.forEach(a =>
+        dataLista.innerHTML += `<option value="${a.uTname}"></option>`)
+    }
+
     refreshTable()
 }
+
+
+
+
+name.addEventListener('change', () => {
+    let selectedOption = termekLista.find(a => a.uTname == name.value)
+    if (selectedOption) {
+        price.value = selectedOption.uTprice
+    } else {
+        price.value = 0
+    }
+})
 
 //selectionchange a terméknévnél (ár feltöltése)

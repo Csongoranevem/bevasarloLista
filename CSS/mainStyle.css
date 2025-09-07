@@ -15,25 +15,12 @@ footer h6{
 }
 
 
-#adatTorles{
+.adatTorles{
     width: 25px;
     height: 25px;
     color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    font-size: 13px;
+
+    padding: 0;
+    border: 0;
 }
-
-
-/*reszponzivitas*/
-
-
-
-/*@media screen and (max-width = 1000) {
-    #accBody{
-        display: flex;
-        flex-direction: row;
-    }
-    
-}*/

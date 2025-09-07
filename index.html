@@ -16,35 +16,36 @@
             <h3>By 13.A</h3>
         </header>
         <main>
-            <div class="accordion" id="accordionExample">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Műveletek
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body" id="accBody">
-                    <!--Űrlap-->
-                    <label for="exampleDataList" class="form-label">Termék neve</label>
-                        <input class="form-control mb-4" list="datalistOptions" id="termekLista" placeholder="Termék neve">
-                        <datalist id="datalistOptions">
-                          <!--options-->
-                        </datalist>
-                      <div class="form-floating">
-                        <input type="number" class="form-control" id="tPrice" min="0" placeholder="Password">
-                        <label for="floatingPassword">Egységár</label>
-
-                      <div class="form-floating mt-4">
-                        <input type="number" class="form-control" id="tDB" min="0" placeholder="Password">
-                        <label for="floatingPassword">darabszám</label>
-
-                      <button type="button" class="btn btn-secondary mt-2" id="addButton">Hozzáadás</button>    
-                      <button type="button" class="btn btn-danger mt-2" id="clearButton" onclick="clearForm()">Törlés</button>    
-
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Műveletek
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body row">
+                            <!--űrlap-->
+                            <div class="form-floating mb-3 col-lg-4">
+                                <input type="text" class="form-control" id="termekLista" placeholder="" >
+                                <label for="nameField">Terméknév</label>
+                            </div>
+                            <datalist id="datalistOptions">
+                                <!--dinamikusan-->
+                            </datalist>
+                            <div class="form-floating mb-3 col-sm-12 col-md-6 col-lg-4">
+                                <input type="number" class="form-control" id="tPrice" min="0" placeholder="">
+                                <label for="tPrice">Egységár (Ft)</label>
+                            </div>
+                            <div class="form-floating mb-3 col-sm-12 col-md-6 col-lg-4">
+                                <input type="number" class="form-control" id="tDB" min="0" placeholder="">
+                                <label for="countField">Mennyiség</label>
+                            </div>
+                            <button type="button" class="btn btn-primary mb-3" id="addButton">Hozzáadás</button>
+                        </div>
                     </div>
-                    </div>
-                  </div>
                 </div>
             </div>
 
